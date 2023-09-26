@@ -160,6 +160,6 @@ export function getCapacitorElectronConfig(): CapacitorElectronConfig {
   } else {
     capFileConfig = JSON.parse(readFileSync(join(app.getAppPath(), 'capacitor.config.json')).toString());
   }
-  if (capFileConfig.electron) config = deepMerge(config, [capFileConfig]);
-  return deepClone(config as Record<string, any>) as CapacitorElectronConfig;
+  if (capFileConfig.electron) capFileConfig = deepMerge(config, [capFileConfig]);
+  return deepClone(capFileConfig as Record<string, any>) as CapacitorElectronConfig;
 }
